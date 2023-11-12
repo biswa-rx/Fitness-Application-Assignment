@@ -1,20 +1,31 @@
+import dependencies.Versions
+import dependencies.Application
+import dependencies.Dependencies
+import dependencies.DebugDependencies
+import dependencies.SupportDependencies
+import dependencies.AndroidTestDependencies
+import dependencies.TestDependencies
+import dependencies.Java
+import dependencies.AnnotationProcessing
+import dependencies.Kotlin
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.example.fitnessassignment"
-    compileSdk = 33
+    namespace = Application.id
+    compileSdk = Versions.compile_sdk
 
     defaultConfig {
-        applicationId = "com.example.fitnessassignment"
-        minSdk = 26
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Application.id
+        minSdk = Versions.min_sdk
+        targetSdk = Versions.target_sdk
+        versionCode = Application.version_code
+        versionName = Application.version_name
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AndroidTestDependencies.instrumentation_runner
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -34,13 +45,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Java.java_version
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = Kotlin.kotlin_compiler_extension_version
     }
     packaging {
         resources {
@@ -50,20 +61,28 @@ android {
 }
 
 dependencies {
+    //Kotlin
+    implementation(Dependencies.core_ktx_library)
+    implementation(Dependencies.lifecycle_runtime_ktx)
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.0")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    //Support
+    implementation(SupportDependencies.activity_compose)
+    implementation(platform(SupportDependencies.compose_bom))
+    implementation(SupportDependencies.compose_ui_library)
+    implementation(SupportDependencies.compose_ui_graphics)
+    implementation(SupportDependencies.ui_tooling_preview)
+    implementation(SupportDependencies.material3_library)
+
+    //Unit Test
+    testImplementation(TestDependencies.junit_library)
+
+    //Instrumentation Test - UI test
+    androidTestImplementation(AndroidTestDependencies.ext_junit)
+    androidTestImplementation(AndroidTestDependencies.espresso_core)
+    androidTestImplementation(platform(AndroidTestDependencies.compose_bom))
+    androidTestImplementation(AndroidTestDependencies.ui_test_junit4)
+
+    //Debug
+    debugImplementation(DebugDependencies.ui_tooling)
+    debugImplementation(DebugDependencies.ui_test_manifest)
 }
