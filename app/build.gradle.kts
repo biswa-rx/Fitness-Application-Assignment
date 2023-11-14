@@ -12,6 +12,10 @@ import dependencies.Kotlin
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -41,8 +45,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = Java.java_version
@@ -60,10 +64,24 @@ android {
     }
 }
 
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
     //Kotlin
     implementation(Dependencies.core_ktx_library)
     implementation(Dependencies.lifecycle_runtime_ktx)
+
+    //Dependencies
+    implementation (Dependencies.hilt_android)
+
+    //Annotation processing
+    kapt (AnnotationProcessing.hilt_compiler)
+
+    kapt ("androidx.hilt:hilt-compiler:1.1.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     //Support
     implementation(SupportDependencies.activity_compose)
@@ -85,4 +103,22 @@ dependencies {
     //Debug
     debugImplementation(DebugDependencies.ui_tooling)
     debugImplementation(DebugDependencies.ui_test_manifest)
+
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation ("com.squareup.okhttp3:okhttp:5.0.0-alpha.3")
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+
+
+
+    //Compose Destination
+    implementation("io.github.raamcosta.compose-destinations:core:1.9.52")
+    ksp("io.github.raamcosta.compose-destinations:ksp:1.9.52")
+
+    //Compose Dependency
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation("androidx.activity:activity-compose:1.7.2")
+    implementation ("com.google.accompanist:accompanist-swiperefresh:0.33.1-alpha")
+    implementation ("androidx.compose.material:material-icons-extended:1.6.0-alpha04")
 }

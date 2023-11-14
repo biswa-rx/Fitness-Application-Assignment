@@ -12,4 +12,5 @@ object Versions {
     val junit_version = "4.13.2"
     val ext_junit_version = "1.1.5"
     val espresso_core_version = "3.5.1"
+    val hilt_version = "2.44"
 }
