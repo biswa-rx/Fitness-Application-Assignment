@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -63,62 +65,76 @@ fun GradientCard(section2: Section2) {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            Column(Modifier.fillMaxSize()) {
-                Row(){
-                    Image(
-                        painter = painterResource(id = R.drawable.profile),
-                        contentDescription = null, // Provide a description for accessibility
-                        modifier = Modifier
-                            .size(90.dp)
-                            .clip(CircleShape)// Set the size of the image
-                            .padding(16.dp), // Add padding if needed
-                        contentScale = ContentScale.Crop // Adjust content scale as needed
-                    )
-                    Column {
-                        Text(text = "Accuracy", color = Color.White)
-                        Text(text = section2.accuracy, color = Color.White)
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2)
+            ) {
+                item {
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.profile),
+                            contentDescription = null, // Provide a description for accessibility
+                            modifier = Modifier
+                                .size(90.dp)
+                                .clip(CircleShape)// Set the size of the image
+                                .padding(16.dp), // Add padding if needed
+                            contentScale = ContentScale.Crop // Adjust content scale as needed
+                        )
+                        Column {
+                            Text(text = "Accuracy", color = Color.White)
+                            Text(text = section2.accuracy, color = Color.White)
+                        }
                     }
-                    Image(
-                        painter = painterResource(id = R.drawable.profile),
-                        contentDescription = null, // Provide a description for accessibility
-                        modifier = Modifier
-                            .size(90.dp)
-                            .clip(CircleShape)// Set the size of the image
-                            .padding(16.dp), // Add padding if needed
-                        contentScale = ContentScale.Crop // Adjust content scale as needed
-                    )
-                    Column {
-                        Text(text = "Workout Duration", color = Color.White)
-                        Text(text = section2.workout_duration, color = Color.White)
-                    }
-
                 }
-                Row(){
-                    Image(
-                        painter = painterResource(id = R.drawable.profile),
-                        contentDescription = null, // Provide a description for accessibility
-                        modifier = Modifier
-                            .size(90.dp)
-                            .clip(CircleShape)// Set the size of the image
-                            .padding(16.dp), // Add padding if needed
-                        contentScale = ContentScale.Crop // Adjust content scale as needed
-                    )
-                    Column {
-                        Text(text = "Reps", color = Color.White)
-                        Text(text = section2.reps.toString(), color = Color.White)
+                item {
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.profile),
+                            contentDescription = null, // Provide a description for accessibility
+                            modifier = Modifier
+                                .size(90.dp)
+                                .clip(CircleShape)// Set the size of the image
+                                .padding(16.dp), // Add padding if needed
+                            contentScale = ContentScale.Crop // Adjust content scale as needed
+                        )
+                        Column {
+                            Text(text = "Workout Duration", color = Color.White)
+                            Text(text = section2.workout_duration, color = Color.White)
+                        }
                     }
-                    Image(
-                        painter = painterResource(id = R.drawable.profile),
-                        contentDescription = null, // Provide a description for accessibility
-                        modifier = Modifier
-                            .size(90.dp)
-                            .clip(CircleShape)// Set the size of the image
-                            .padding(16.dp), // Add padding if needed
-                        contentScale = ContentScale.Crop // Adjust content scale as needed
-                    )
-                    Column {
-                        Text(text = "Calories Burn", color = Color.White)
-                        Text(text = section2.calories_burned.toString(), color = Color.White)
+                }
+
+                item {
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.profile),
+                            contentDescription = null, // Provide a description for accessibility
+                            modifier = Modifier
+                                .size(90.dp)
+                                .clip(CircleShape)// Set the size of the image
+                                .padding(16.dp), // Add padding if needed
+                            contentScale = ContentScale.Crop // Adjust content scale as needed
+                        )
+                        Column {
+                            Text(text = "Reps", color = Color.White)
+                            Text(text = section2.reps.toString(), color = Color.White)
+                        }
+                    }
+                }
+                item {
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.profile),
+                            contentDescription = null, // Provide a description for accessibility
+                            modifier = Modifier
+                                .size(90.dp)
+                                .clip(CircleShape)// Set the size of the image
+                                .padding(16.dp), // Add padding if needed
+                            contentScale = ContentScale.Crop // Adjust content scale as needed
+                        )
+                        Column {
+                            Text(text = "Calories Burn", color = Color.White)
+                            Text(text = section2.calories_burned.toString(), color = Color.White)
+                        }
                     }
 
                 }
