@@ -4,7 +4,8 @@ import com.example.fitnessassignment.domain.model.WorkoutProgress
 
 data class MainViewState(
     var workoutProgress: WorkoutProgress? = null,
-    val isRefreshing: Boolean = false,
-    var isLoading: Boolean = false,
-    var error: String? = null
+    var isRequesting: Boolean = false,
+    var isResponse: Boolean = false,
+    var isRefreshing:Boolean = false,
+    var errorMessage: String? = null
 )

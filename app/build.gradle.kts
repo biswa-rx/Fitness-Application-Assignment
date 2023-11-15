@@ -76,12 +76,11 @@ dependencies {
 
     //Dependencies
     implementation (Dependencies.hilt_android)
+    implementation(Dependencies.hilt_navigation_compose)
 
     //Annotation processing
     kapt (AnnotationProcessing.hilt_compiler)
-
-    kapt ("androidx.hilt:hilt-compiler:1.1.0")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
+    kapt(AnnotationProcessing.hilt_android_compiler)
 
     //Support
     implementation(SupportDependencies.activity_compose)
@@ -121,4 +120,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation ("com.google.accompanist:accompanist-swiperefresh:0.33.1-alpha")
     implementation ("androidx.compose.material:material-icons-extended:1.6.0-alpha04")
+
+    //For profile picture
+    implementation("io.coil-kt:coil-compose:2.4.0")
 }
