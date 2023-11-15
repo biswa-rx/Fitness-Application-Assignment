@@ -24,7 +24,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.fitnessassignment.R
 import com.example.fitnessassignment.data.remote.dto.Section2
 import com.example.fitnessassignment.presentation.home_screen.state.MainViewState
@@ -34,7 +36,11 @@ import com.example.fitnessassignment.ui.theme.sky
 
 @Composable
 fun Section_2_Card(state: MainViewState){
-    state.workoutProgress?.data?.let { GradientCard(it.section_2) }
+
+    state.workoutProgress?.data?.let {
+        Text(text = "Enhance your journey with AI tracker", color = Color.Black, fontSize = 18.sp, modifier = Modifier.padding(start = 20.dp), fontWeight = FontWeight.Bold)
+        GradientCard(it.section_2)
+    }
 
 }
 
@@ -69,71 +75,70 @@ fun GradientCard(section2: Section2) {
                 columns = GridCells.Fixed(2)
             ) {
                 item {
-                    Row {
+                    Row(Modifier.padding(vertical = 20.dp)) {
                         Image(
                             painter = painterResource(id = R.drawable.profile),
                             contentDescription = null, // Provide a description for accessibility
                             modifier = Modifier
-                                .size(90.dp)
+                                .size(70.dp)
                                 .clip(CircleShape)// Set the size of the image
-                                .padding(16.dp), // Add padding if needed
+                                ,
                             contentScale = ContentScale.Crop // Adjust content scale as needed
                         )
                         Column {
-                            Text(text = "Accuracy", color = Color.White)
-                            Text(text = section2.accuracy, color = Color.White)
+                            Text(text = "Accuracy", color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(start = 10.dp), fontWeight = FontWeight.Bold)
+                            Text(text = section2.accuracy, color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(start = 10.dp), fontWeight = FontWeight.Bold)
                         }
                     }
                 }
                 item {
-                    Row {
+                    Row(Modifier.padding(vertical = 20.dp)) {
                         Image(
                             painter = painterResource(id = R.drawable.profile),
                             contentDescription = null, // Provide a description for accessibility
                             modifier = Modifier
-                                .size(90.dp)
-                                .clip(CircleShape)// Set the size of the image
-                                .padding(16.dp), // Add padding if needed
+                                .size(70.dp)
+                                .clip(CircleShape),// Set the size of the image
                             contentScale = ContentScale.Crop // Adjust content scale as needed
                         )
                         Column {
-                            Text(text = "Workout Duration", color = Color.White)
-                            Text(text = section2.workout_duration, color = Color.White)
+                            Text(text = "Workout Duration", color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(start = 10.dp), fontWeight = FontWeight.Bold)
+                            Text(text = section2.workout_duration, color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(start = 10.dp), fontWeight = FontWeight.Bold)
                         }
                     }
                 }
 
                 item {
-                    Row {
+                    Row(Modifier.padding(vertical = 20.dp)) {
                         Image(
                             painter = painterResource(id = R.drawable.profile),
                             contentDescription = null, // Provide a description for accessibility
                             modifier = Modifier
-                                .size(90.dp)
+                                .size(70.dp)
                                 .clip(CircleShape)// Set the size of the image
-                                .padding(16.dp), // Add padding if needed
+                                ,
                             contentScale = ContentScale.Crop // Adjust content scale as needed
                         )
                         Column {
-                            Text(text = "Reps", color = Color.White)
-                            Text(text = section2.reps.toString(), color = Color.White)
+                            Text(text = "Reps", color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(start = 10.dp), fontWeight = FontWeight.Bold)
+                            Text(text = section2.reps.toString(), color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(start = 10.dp), fontWeight = FontWeight.Bold)
                         }
                     }
                 }
                 item {
-                    Row {
+                    Row(Modifier.padding(vertical = 20.dp)) {
                         Image(
                             painter = painterResource(id = R.drawable.profile),
                             contentDescription = null, // Provide a description for accessibility
                             modifier = Modifier
-                                .size(90.dp)
+                                .size(70.dp)
                                 .clip(CircleShape)// Set the size of the image
-                                .padding(16.dp), // Add padding if needed
+                                ,
                             contentScale = ContentScale.Crop // Adjust content scale as needed
                         )
                         Column {
-                            Text(text = "Calories Burn", color = Color.White)
-                            Text(text = section2.calories_burned.toString(), color = Color.White)
+                            Text(text = "Calories Burn", color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(start = 10.dp), fontWeight = FontWeight.Bold)
+                            Text(text = section2.calories_burned.toString(), color = Color.White, fontSize = 18.sp, modifier = Modifier.padding(start = 10.dp), fontWeight = FontWeight.Bold)
                         }
                     }
 

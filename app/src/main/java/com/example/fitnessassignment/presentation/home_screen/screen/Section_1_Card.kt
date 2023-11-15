@@ -38,6 +38,7 @@ import com.example.fitnessassignment.presentation.home_screen.state.MainViewStat
 
 @Composable
 fun Section_1_Card(state: MainViewState) {
+    Text(text = "Active Workout plan", color = Color.Black, fontSize = 18.sp, modifier = Modifier.padding(start = 20.dp), fontWeight = FontWeight.Bold)
     Card(
         modifier = Modifier
             .fillMaxWidth()
